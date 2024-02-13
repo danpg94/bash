@@ -52,3 +52,55 @@ echo "${#variable}"
 other_variable="variable"
 echo ${!other_variable}
 
+# The default value for variable:
+echo "${foo:-"DefaultValueIfFooIsMissingOrEmpty"}"
+
+# Declare an array with for variable:
+array=(one two three four five six)
+# Print the first element:
+echo "${array[0]}"
+# Print all elements:
+echo "${array[@]}"
+# Print the number of elements
+echo "${#array[@]}"
+# Print the number of characters of the third element
+echo "${#array[2]}"
+# Print 2 elements starting from the fourth
+echo "${array[@]:3:2}"
+# Print all elements each of them on new line.
+for item in "${array[@]}"; do
+	echo "$item"
+done
+
+# Built in variables:
+# There are some useful built-in variables, like:
+echo "Last program's return value: $?"
+echo "Script's PID: $$"
+echo "Number of arguments passed to script: $#"
+echo "All arguments passed to script: $@"
+echo "Script's arguments separated into different variables: $1 $2..."
+
+# Brace Expansion {...}
+# used to generate aritrary strings:
+echo {1..10}
+echo {a..z}
+# This will output the range from the start value to the end value
+# Note you can't use variables here:
+from=1
+to=10
+echo {$from..$to}
+
+# Now that we know how to echo and use variables,
+# let's learn some of the other basics of Bash!
+
+# Our current directory is available through the command 'pwd'.
+# 'pwd' stands for "print working directory".
+# We can also use the built-in variable '$PWD'.
+# Observe that the following are equivalent:
+echo "I'm in $(pwd)"
+echo "I'm in $PWD"
+
+# If you get too much output in your terminal, or from a script, the command
+# 'clear' clears your screen:
+clear
+# Ctrl-L also works for clearing output.
